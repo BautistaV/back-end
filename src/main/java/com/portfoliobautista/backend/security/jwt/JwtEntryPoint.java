@@ -14,18 +14,20 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+
+
+/**
+ *
+ * @author Bautista
+ */
 @Component
 public class JwtEntryPoint implements AuthenticationEntryPoint {
 
-    // Implementamos un logger para ver cual metodo da error en caso de falla
     private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
-  //Metodo implementado de AuthenticationEntryPoint
     @Override
-    public void commence(HttpServletRequest request,
-                         HttpServletResponse response,
-                         AuthenticationException authException) throws IOException, ServletException {
-        logger.error("Fallo el metodo commence");
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No esta autorizado");
+    public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException e) throws IOException, ServletException {
+        logger.error("fail en el método commence");
+        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "no autorizado");
     }
 }

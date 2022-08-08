@@ -2,23 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.portfoliobautista.backend.security.Dto;
+package com.portfoliobautista.backend.security.dto;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
  * @author Bautista
  */
 public class NuevoUsuario {
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String nombreUsuario;
+    @Email
     private String email;
+    @NotBlank
     private String password;
     private Set<String> roles = new HashSet<>();
-    
-    //getters setters
 
     public String getNombre() {
         return nombre;
@@ -59,6 +63,4 @@ public class NuevoUsuario {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-    
-    
 }

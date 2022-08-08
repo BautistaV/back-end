@@ -4,7 +4,7 @@
  */
 package com.portfoliobautista.backend.security.jwt;
 
-import com.portfoliobautista.backend.security.Entity.UsuarioPrincipal;
+import com.portfoliobautista.backend.security.entity.UsuarioPrincipal;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -20,40 +20,33 @@ import org.springframework.stereotype.Component;
 
 
 
+
+
 /**
  *
  * @author Bautista
  */
 @Component
 public class JwtProvider {
+     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
-    // Implementamos un logger para ver cual metodo da error en caso de falla
-    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
-
-    //Valores que tenemos en el aplicattion.properties
     @Value("${jwt.secret}")
     private String secret;
 
     @Value("${jwt.expiration}")
     private int expiration;
 
-    /**
-     *setIssuedAt --> Asigna fecha de creción del token
-     *setExpiration --> Asigna fehca de expiración
-     * signWith --> Firma
-     */
     public String generateToken(Authentication authentication){
-        UsuarioPrincipal usuarioMain = (UsuarioPrincipal) authentication.getPrincipal();
-        return Jwts.builder().setSubject(usuarioMain.getUsername())
+        UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
+        return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 
-    //subject --> Nombre del usuario
     public String getNombreUsuarioFromToken(String token){
-           return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
     public Boolean validateToken(String token){

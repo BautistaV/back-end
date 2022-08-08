@@ -4,8 +4,8 @@
  */
 package com.portfoliobautista.backend.security.repository;
 
-import com.portfoliobautista.backend.security.Entity.Rol;
-import com.portfoliobautista.backend.security.Enums.RolNombre;
+import com.portfoliobautista.backend.security.entity.Rol;
+import com.portfoliobautista.backend.security.enums.RolNombre;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author Bautista
  */
 @Repository
-public interface iRolRepository extends JpaRepository<Rol, Integer>{
+public interface RolRepository extends JpaRepository<Rol, Integer> {
     Optional<Rol> findByRolNombre(RolNombre rolNombre);
 }

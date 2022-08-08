@@ -4,30 +4,30 @@
  */
 package com.portfoliobautista.backend.security.service;
 
-import com.portfoliobautista.backend.security.Entity.Rol;
-import com.portfoliobautista.backend.security.Enums.RolNombre;
-import com.portfoliobautista.backend.security.repository.iRolRepository;
+import com.portfoliobautista.backend.security.entity.Rol;
+import com.portfoliobautista.backend.security.enums.RolNombre;
+import com.portfoliobautista.backend.security.repository.RolRepository;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Bautista
  */
-
 @Service
 @Transactional
 public class RolService {
+
     @Autowired
-    iRolRepository irolRepository;
-    
+    RolRepository rolRepository;
+
     public Optional<Rol> getByRolNombre(RolNombre rolNombre){
-        return irolRepository.findByRolNombre(rolNombre);
+        return rolRepository.findByRolNombre(rolNombre);
     }
-    
+
     public void save(Rol rol){
-        irolRepository.save(rol);
+        rolRepository.save(rol);
     }
 }
