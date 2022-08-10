@@ -92,7 +92,7 @@ public class CEducation {
         education.setEduName(dtoedu.getEduName());
         education.setEduDesc((dtoedu.getEduDesc()));
         education.setEduTime((dtoedu.getEduTime()));
-        education.setEduTime((dtoedu.getEduImg()));
+        education.setEduImg((dtoedu.getEduImg()));
         
         eduService.save(education);
         return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);

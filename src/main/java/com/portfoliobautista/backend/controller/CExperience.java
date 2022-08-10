@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +51,7 @@ public class CExperience {
         return new ResponseEntity(experience, HttpStatus.OK);
         
     }
-    
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!expService.existsById(id)) {
@@ -61,7 +62,7 @@ public class CExperience {
         
     }
 
-    
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoExperience dtoexp){      
         if(StringUtils.isBlank(dtoexp.getExpName()))
@@ -75,7 +76,7 @@ public class CExperience {
         return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
         
     }
-    
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExperience dtoexp){
 
@@ -90,9 +91,9 @@ public class CExperience {
         
         Experience experience = expService.getOne(id).get();
         experience.setExpName(dtoexp.getExpName());
-        experience.setExpDesc((dtoexp.getExpDesc()));
-        experience.setExpTime((dtoexp.getExpTime()));
-        experience.setExpTime((dtoexp.getExpImg()));
+        experience.setExpDesc(dtoexp.getExpDesc());
+        experience.setExpTime(dtoexp.getExpTime());
+        experience.setExpImg(dtoexp.getExpImg());
         
         expService.save(experience);
         return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);

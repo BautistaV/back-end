@@ -28,6 +28,17 @@ public class Persona {
     @NotNull
     @Size(min = 1, max = 1000)
     private String img_perfil;
+            
+    @NotNull
+    @Size(min = 1, max = 1000)
+    private String about;
+            
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String location;
     
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String titulo;
     
 }

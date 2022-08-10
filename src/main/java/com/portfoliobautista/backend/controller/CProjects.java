@@ -91,7 +91,7 @@ public class CProjects {
         projects.setProjName(dtoproj.getProjName());
         projects.setProjDesc((dtoproj.getProjDesc()));
         projects.setProjTime((dtoproj.getProjTime()));
-        projects.setProjTime((dtoproj.getProjImg()));
+        projects.setProjImg((dtoproj.getProjImg()));
         
         projService.save(projects);
         return new ResponseEntity(new Mensaje("Proyecto actualizada"), HttpStatus.OK);
