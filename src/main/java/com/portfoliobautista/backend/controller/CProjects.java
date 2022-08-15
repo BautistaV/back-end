@@ -68,7 +68,7 @@ public class CProjects {
         if(projService.existsByProjName(dtoproj.getProjName()))
             return new ResponseEntity(new Mensaje("Ese proyecto existe"), HttpStatus.BAD_REQUEST);
         
-        Projects projects = new Projects(dtoproj.getProjName(), dtoproj.getProjDesc(), dtoproj.getProjTime(), dtoproj.getProjImg());
+        Projects projects = new Projects(dtoproj.getProjName(), dtoproj.getProjDesc(), dtoproj.getProjTime(), dtoproj.getProjImg(), dtoproj.getProjLink());
         projService.save(projects);
         
         return new ResponseEntity(new Mensaje("Proyecto agregado"), HttpStatus.OK);
@@ -92,6 +92,7 @@ public class CProjects {
         projects.setProjDesc((dtoproj.getProjDesc()));
         projects.setProjTime((dtoproj.getProjTime()));
         projects.setProjImg((dtoproj.getProjImg()));
+        projects.setProjLink(dtoproj.getProjLink());
         
         projService.save(projects);
         return new ResponseEntity(new Mensaje("Proyecto actualizada"), HttpStatus.OK);

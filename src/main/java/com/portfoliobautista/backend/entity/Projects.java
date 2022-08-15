@@ -22,17 +22,19 @@ public class Projects {
     private String projDesc;
     private String projTime;
     private String projImg;
+    private String projLink;
     
     
     public Projects() {
         
     }
 
-    public Projects(String projName, String projDesc, String projTime, String projImg) {
+    public Projects(String projName, String projDesc, String projTime, String projImg, String porjLink) {
         this.projName = projName;
         this.projDesc = projDesc;
         this.projTime = projTime;
         this.projImg = projImg;
+        this.projLink = projLink;
         
     }
 
@@ -78,13 +80,23 @@ public class Projects {
         
     }
     
-        public String getProjImg() {
+    public String getProjImg() {
         return projImg;
         
     }
 
     public void setProjImg(String projImg) {
         this.projImg = projImg;
+        
+    }
+    
+    public String getProjLink() {
+        return projLink;
+        
+    }
+
+    public void setProjLink(String projLink) {
+        this.projLink = projLink;
         
     }
     

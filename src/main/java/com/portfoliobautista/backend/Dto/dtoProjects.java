@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
  * @author Bautista
  */
 public class dtoProjects {
-     @NotBlank
+    @NotBlank
     private String projName;
     @NotBlank
     private String projDesc;
@@ -19,17 +19,20 @@ public class dtoProjects {
     private String projTime;
     @NotBlank
     private String projImg;
+    @NotBlank
+    private String projLink;
     
     //constructors
     public dtoProjects() {
         
     }
 
-    public dtoProjects(String projName, String projDesc, String projTime, String projImg) {
+    public dtoProjects(String projName, String projDesc, String projTime, String projImg, String projLink) {
         this.projName = projName;
         this.projDesc = projDesc;
         this.projTime = projTime;
         this.projImg = projImg;
+        this.projLink = projLink;
         
     }
     
@@ -66,13 +69,23 @@ public class dtoProjects {
         
     }
     
-        public String getProjImg() {
+    public String getProjImg() {
         return projImg;
         
     }
 
     public void setProjImg(String projImg) {
         this.projImg = projImg;
+        
+    }
+    
+    public String getProjLink() {
+        return projLink;
+        
+    }
+
+    public void setProjLink(String projLink) {
+        this.projLink = projLink;
         
     }
 }
