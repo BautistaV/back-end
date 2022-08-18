@@ -30,7 +30,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/workexp")
-@CrossOrigin(origins = "http://localhost:4200")
+// @CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfoliobautista-f146c.web.app")
+
+
 public class CExperience {
     
     @Autowired
