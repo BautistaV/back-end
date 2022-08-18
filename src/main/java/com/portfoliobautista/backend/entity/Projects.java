@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Projects {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String projName;
+    @Size(min = 1, max = 1000)
     private String projDesc;
     private String projTime;
     private String projImg;
@@ -29,7 +31,7 @@ public class Projects {
         
     }
 
-    public Projects(String projName, String projDesc, String projTime, String projImg, String porjLink) {
+    public Projects(String projName, String projDesc, String projTime, String projImg, String projLink) {
         this.projName = projName;
         this.projDesc = projDesc;
         this.projTime = projTime;
